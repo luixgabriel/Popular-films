@@ -9,9 +9,12 @@
 
 .films {
     background-color: rgba(32, 30, 30, 0.979);
+    
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     
 }
 
@@ -47,8 +50,27 @@
 
 .film p{
     width: 82%;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 8px;
     font-family: 'Nanum Gothic';
-    font-weight: 100px;
+    
+}
+.favBtn {
+    padding: 8px;
+    cursor: pointer;
+    background-color: aqua;
+    width: 300px;
+    display: none;
+    transition: 2s;
+   
+}
+.hide{
+    display: block;
+    padding: 8px;
+    cursor: pointer;
+    background-color: aqua;
+    width: 300px;
+    
+    transition: 2s;
+   
 }

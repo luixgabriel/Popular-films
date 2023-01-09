@@ -10,36 +10,60 @@ async function getMovies(){
     
 }
 
-getMovies()
 
 async function popularMovies(){
 
-       
+      var favMovies = []
         
         var moviesList = await getMovies() 
         const listMovies = document.querySelector('.films')
-        console.log(listMovies)
         moviesList.forEach(movie => {
             const { poster_path, title, vote_average, overview } = movie;
             var poster = `https://www.themoviedb.org/t/p/w220_and_h330_face/${poster_path}`
             
             
             const divFilm = document.createElement('div')
+            // divFilm.setAttribute('id', movie.id)
             divFilm.classList.add('film')
-            divFilm.innerHTML = ` <h4>${movie.title}</h4>
+            divFilm.innerHTML = ` 
+            <h4>${movie.title}</h4>
             <img src="${poster}">
             <p>
                ${overview}
-            </p>`
+            </p>
+            `
+
+         var btnFav = document.createElement('button')
+         btnFav.textContent = "fav film"
+         btnFav.classList.add('favBtn')
+         btnFav.setAttribute('id', movie.id)
+         btnFav.addEventListener('click', ()=>{
+            var idFavMovie = btnFav.getAttribute("id")
+            favMovies.push(idFavMovie)
+            console.log(favMovies)
+         })
         
-           
-           listMovies.appendChild(divFilm)
+         divFilm.addEventListener('mouseover', ()=>{
+            btnFav.classList.remove('favBtn')
+            btnFav.classList.add('hide')
+         })
 
+         divFilm.addEventListener('mouseout', ()=>{
+            btnFav.classList.remove('hide')
+            btnFav.classList.add('favBtn')
+         })
 
+         listMovies.appendChild(divFilm)
+         listMovies.appendChild(btnFav)
+         //   const favButton = document.createElement('button')
+         //   favButton.textContent = "Adicionar aos favoritos"
+         //   favButton.appendChild(divFilm)
         });
 
+      
+       
 
-
+       
         // const listMovies = document.querySelector('.films')
         // var nameMovie = document.createElement('h1')
         // nameMovie.textContent = moviesList[0].title
@@ -48,4 +72,8 @@ async function popularMovies(){
 }
 
 popularMovies()
+
+const favButton = document.createElement('button')
+favButton.textContent = "Adicionar aos favoritos"
+favButton.appendChild(divFilm)
 
