@@ -13,10 +13,11 @@ async function getMovies(){
 
 async function popularMovies(){
 
-      var favMovies = []
+      var favMovies;
         
         var moviesList = await getMovies() 
         const listMovies = document.querySelector('.films')
+        const favoriteMovies = document.querySelector('.favMovies')
         moviesList.forEach(movie => {
             const { poster_path, title, vote_average, overview } = movie;
             var poster = `https://www.themoviedb.org/t/p/w220_and_h330_face/${poster_path}`
@@ -37,22 +38,48 @@ async function popularMovies(){
          btnFav.textContent = "fav film"
          btnFav.classList.add('favBtn')
          btnFav.setAttribute('id', movie.id)
-         btnFav.addEventListener('click', ()=>{
-            var idFavMovie = btnFav.getAttribute("id")
-            favMovies.push(idFavMovie)
-            console.log(favMovies)
-         })
+
+
+         btnFav.addEventListener('click', listFavmovies)
         
-         divFilm.addEventListener('mouseover', ()=>{
-            btnFav.classList.remove('favBtn')
-            btnFav.classList.add('hide')
-         })
+         // divFilm.addEventListener('mouseover', ()=>{
+         //    btnFav.classList.remove('favBtn')
+         //    btnFav.classList.add('hide')
+         // })
 
-         divFilm.addEventListener('mouseout', ()=>{
-            btnFav.classList.remove('hide')
-            btnFav.classList.add('favBtn')
-         })
+         // btnFav.addEventListener('mouseout', ()=>{
+         //    btnFav.classList.remove('hide')
+         //    btnFav.classList.add('favBtn')
+         // })
+         async function listFavmovies(){
 
+            var idFavMovie = btnFav.getAttribute("id")
+
+               favMovies = idFavMovie
+
+               var response = await fetch(`https://api.themoviedb.org/3/movie/${favMovies}?api_key=00bb3908ca1c5f0bcd63e7eaf926d628&language=en-US`)
+               var data = await response.json()
+
+           
+               console.log(data.title)
+               favMovies = "" 
+
+               var divTeste = document.createElement('div')
+               divTeste.classList.add('favFilm')
+
+               divTeste.innerHTML = `<h4>${data.title}</h4>
+               <img src="${poster}">
+               <p>
+                  ${overview}
+               </p>
+               `
+
+               favoriteMovies.appendChild(divTeste)
+
+        
+           
+         }
+         
          listMovies.appendChild(divFilm)
          listMovies.appendChild(btnFav)
          //   const favButton = document.createElement('button')
@@ -73,7 +100,5 @@ async function popularMovies(){
 
 popularMovies()
 
-const favButton = document.createElement('button')
-favButton.textContent = "Adicionar aos favoritos"
-favButton.appendChild(divFilm)
+
 

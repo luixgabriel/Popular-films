@@ -28,8 +28,11 @@
     border-radius: 20px;
     width: 90%;
     position: relative;
-    margin: 10px 0;
+    margin-top: 10px;
+    border: none;
 }
+
+
 
 .film h4 {
     color: rgba(32, 30, 30, 0.979);
@@ -58,19 +61,53 @@
 .favBtn {
     padding: 8px;
     cursor: pointer;
-    background-color: aqua;
+    background-color: rgb(211, 224, 195);
     width: 300px;
-    display: none;
-    transition: 2s;
+    font-size: 1.8rem;
+    display: block;
+    transition: 1s;
+    margin: 0px;
+    border: none; border-radius: 0px 0px 20px 20px;
    
 }
-.hide{
+/* .hide{
     display: block;
     padding: 8px;
     cursor: pointer;
-    background-color: aqua;
-    width: 300px;
-    
-    transition: 2s;
+    font-size: 1.8rem;
+    background-color: rgb(211, 224, 195);;
+    width: 500px;
+    transition: 1s;
+    margin: 0px;
+    border: none;
+    border-radius: 0px 0px 20px 20px;
    
+} */
+
+.favMovies{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid black;
+    background-color: rgb(211, 224, 195);
+    border-radius: 20px;
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+    border: none;
+}
+
+.favFilm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid black;
+    background-color: rgb(30, 127, 255);
+    border-radius: 20px;
+    width: 50%;
+    position: relative;
+    margin-top: 10px;
+    border: none;
 }
