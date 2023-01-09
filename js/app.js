@@ -1,5 +1,4 @@
 
-
 const apiURL = "https://api.themoviedb.org/3/movie/popular?api_key=00bb3908ca1c5f0bcd63e7eaf926d628&language=en-US&page=1"
 
 async function getMovies(){
@@ -24,7 +23,6 @@ async function popularMovies(){
             
             
             const divFilm = document.createElement('div')
-            // divFilm.setAttribute('id', movie.id)
             divFilm.classList.add('film')
             divFilm.innerHTML = ` 
             <h4>${movie.title}</h4>
@@ -35,22 +33,20 @@ async function popularMovies(){
             `
 
          var btnFav = document.createElement('button')
-         btnFav.textContent = "fav film"
+         btnFav.textContent = 'Assistir mais tarde'
          btnFav.classList.add('favBtn')
          btnFav.setAttribute('id', movie.id)
 
 
          btnFav.addEventListener('click', listFavmovies)
         
-         // divFilm.addEventListener('mouseover', ()=>{
-         //    btnFav.classList.remove('favBtn')
-         //    btnFav.classList.add('hide')
-         // })
+       
+         btnFav.addEventListener('click', ()=>{
+            btnFav.textContent = 'Adicionado aos meus filmes!'
+            btnFav.style.backgroundColor = "#4287f5"
+         })
 
-         // btnFav.addEventListener('mouseout', ()=>{
-         //    btnFav.classList.remove('hide')
-         //    btnFav.classList.add('favBtn')
-         // })
+
          async function listFavmovies(){
 
             var idFavMovie = btnFav.getAttribute("id")
@@ -75,26 +71,12 @@ async function popularMovies(){
                `
 
                favoriteMovies.appendChild(divTeste)
-
-        
-           
          }
          
          listMovies.appendChild(divFilm)
          listMovies.appendChild(btnFav)
-         //   const favButton = document.createElement('button')
-         //   favButton.textContent = "Adicionar aos favoritos"
-         //   favButton.appendChild(divFilm)
+        
         });
-
-      
-       
-
-       
-        // const listMovies = document.querySelector('.films')
-        // var nameMovie = document.createElement('h1')
-        // nameMovie.textContent = moviesList[0].title
-        // listMovies.appendChild(nameMovie)
 
 }
 
