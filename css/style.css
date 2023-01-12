@@ -111,7 +111,7 @@ header{
     flex-direction: column;
     padding: 2px;
     border-radius: 20px;
-    width: 25%;
+    max-width: 35%;
     margin-top: 10px;
     margin-left: 8px;
     
@@ -172,7 +172,7 @@ header{
     }
 	.favFilm{
         
-        width: 40%;
+        max-width: 40%;
         flex-wrap: nowrap;
        
     }
@@ -191,15 +191,35 @@ header{
         overflow-x: auto;
     }
 	.favFilm{
-        width: 40%;
+        max-width: 100%;
         flex-wrap: nowrap;
+       
+    }
+    .favFilm h4 {
+        font-size: 30px;
+    }
+    .favFilm p {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media screen and (max-width: 579px) {
+    .favMovies{
+        flex-wrap: wrap;
+        overflow-x: auto;
+    }
+	.favFilm{
+        width: 100%;
+        flex-wrap: nowrap;
+       
        
     }
     .favFilm h4 {
         font-size: 20px;
     }
     .favFilm p {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
 }
