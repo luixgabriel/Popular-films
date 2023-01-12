@@ -3,6 +3,9 @@ Lista dos TOP 20 filmes mais vistos do mundo segundo a API do TMDB, Com a possib
 
 Sistema simples para treinar requisições de APIs, responsividade e javascript.
 
+# Deploy: #
+https://popular-filmstmdbapi.netlify.app/
+
 # Tecnologias usadas: #
 
 ![html](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
