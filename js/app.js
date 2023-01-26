@@ -1,4 +1,3 @@
-
 const apiURL = "https://api.themoviedb.org/3/movie/popular?api_key=00bb3908ca1c5f0bcd63e7eaf926d628&language=en-US&page=1"
 
 async function getMovies(){
@@ -12,7 +11,8 @@ async function getMovies(){
 
 async function popularMovies(){
 
-      var favMovies;
+      
+      var favMoviesArr = []
         
         var moviesList = await getMovies() 
         const listMovies = document.querySelector('.films')
@@ -51,26 +51,25 @@ async function popularMovies(){
 
             var idFavMovie = btnFav.getAttribute("id")
 
-               favMovies = idFavMovie
-
-               var response = await fetch(`https://api.themoviedb.org/3/movie/${favMovies}?api_key=00bb3908ca1c5f0bcd63e7eaf926d628&language=en-US`)
+               var response = await fetch(`https://api.themoviedb.org/3/movie/${idFavMovie}?api_key=00bb3908ca1c5f0bcd63e7eaf926d628&language=en-US`)
                var data = await response.json()
 
-           
-               console.log(data.title)
-               favMovies = "" 
+               favMoviesArr.push(data.title)
 
-               var divTeste = document.createElement('div')
-               divTeste.classList.add('favFilm')
+               
+               console.log(favMoviesArr)
 
-               divTeste.innerHTML = `<h4>${data.title}</h4>
+               var divFavMovie = document.createElement('div')
+               divFavMovie.classList.add('favFilm')
+
+               divFavMovie.innerHTML = `<h4>${data.title}</h4>
                <img src="${poster}">
                <p>
                   ${overview}
                </p>
                `
 
-               favoriteMovies.appendChild(divTeste)
+               favoriteMovies.appendChild(divFavMovie)
          }
          
          listMovies.appendChild(divFilm)
@@ -81,6 +80,4 @@ async function popularMovies(){
 }
 
 popularMovies()
-
-
 
